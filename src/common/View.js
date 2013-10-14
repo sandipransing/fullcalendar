@@ -146,13 +146,19 @@ function View(element, calendar, viewName) {
 	}
 	
 	
-	// attaches eventClick, eventMouseover, eventMouseout
+	// attaches eventClick, eventdblClick, eventMouseover, eventMouseout
 	function eventElementHandlers(event, eventElement) {
 		eventElement
 			.click(function(ev) {
 				if (!eventElement.hasClass('ui-draggable-dragging') &&
 					!eventElement.hasClass('ui-resizable-resizing')) {
 						return trigger('eventClick', this, event, ev);
+					}
+			})
+			.dblclick(function(ev) {
+				if (!eventElement.hasClass('ui-draggable-dragging') &&
+					!eventElement.hasClass('ui-resizable-resizing')) {
+						return trigger('eventdblClick', this, event, ev);
 					}
 			})
 			.hover(
